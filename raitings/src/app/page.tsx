@@ -1,28 +1,30 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import ProductCard from '../components';
-
 
 export default function Home() {
-
-  const product = {
-    name: 'Apple iPhone 15 Pro Max 256 GB',
-    description: 'Telefono intelilgente iPhone 15 Pro Max, 256 GB de memoria.',
-    price: 999.99,
-    image: 'https://images.fravega.com/f300/19753f356a5efd19a44b967777ce8b1b.jpg.webp', // URL de la imagen del producto
-  };
-
   return (
     <main className={styles.main}>
       <div className={styles.description}>
-        <div style={{ display: 'flex', justifyContent: 'center', padding: '2rem' }}>
-          <ProductCard product={product} />
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'center', padding: '2rem' }}>
-          <ProductCard product={product} />
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'center', padding: '2rem' }}>
-          <ProductCard product={product} />
+        <p>
+          Get started by editing&nbsp;
+          <code className={styles.code}>src/app/page.tsx</code>
+        </p>
+        <div>
+          <a
+            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            By{" "}
+            <Image
+              src="/vercel.svg"
+              alt="Vercel Logo"
+              className={styles.vercelLogo}
+              width={100}
+              height={24}
+              priority
+            />
+          </a>
         </div>
       </div>
 
