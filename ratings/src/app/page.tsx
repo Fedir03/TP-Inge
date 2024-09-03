@@ -1,95 +1,81 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Link from 'next/link'
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { UserCircle, Search, ChevronDown } from 'lucide-react'
 
-export default function Home() {
+export default function LandingPage() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
+    <div className="min-h-screen flex flex-col">
+      <header className="bg-primary text-primary-foreground p-4">
+        <nav className="container mx-auto flex items-center justify-between">
+          <div className="flex items-center space-x-6">
+            <Link href="/" className="text-2xl font-bold">
+              Pingust.ar
+            </Link>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost">
+                  Categories <ChevronDown className="ml-1 h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem>
+                  <Link href="/categories/electronics">Electronics</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link href="/categories/books">Books</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link href="/categories/home">Home & Kitchen</Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <Link href="/contact" className="hover:underline">
+              Contact Us
+            </Link>
+            <Link href="/about" className="hover:underline">
+              About Us
+            </Link>
+            <Link href="/productList" className="hover:underline">
+              Pingu
+            </Link>
+          </div>
+          <Link href="/login" className="text-primary-foreground hover:text-primary-foreground/80">
+            <UserCircle className="h-6 w-6" />
+            <span className="sr-only">Login or Sign Up</span>
+          </Link>
+        </nav>
+      </header>
+
+      <main className="flex-grow flex items-center justify-center px-4">
+        <div className="w-full max-w-2xl">
+          <h1 className="text-4xl font-bold text-center mb-8">Find and Rate Products</h1>
+          <form action="/search" className="flex items-center">
+            <Input
+              type="search"
+              placeholder="Search for products..."
+              className="flex-grow"
+              name="q"
             />
-          </a>
+            <Button type="submit" className="ml-2">
+              <Search className="h-4 w-4 mr-2" />
+              Search
+            </Button>
+          </form>
         </div>
-      </div>
+      </main>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+      <footer className="bg-muted text-muted-foreground p-4 mt-auto">
+        <div className="container mx-auto text-center">
+          © 2023 RateIt. All rights reserved.
+        </div>
+      </footer>
+    </div>
+  )
 }
