@@ -27,48 +27,6 @@ export default function ProductPage() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Top Navigation Bar */}
-      <header className="bg-primary text-primary-foreground p-4">
-        <nav className="container mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-6">
-            <Link href="/" className="text-2xl font-bold">
-              RateIt
-            </Link>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost">
-                  Categories <ChevronDown className="ml-1 h-4 w-4" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem>
-                  <Link href="/categories/electronics">Electronics</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="/categories/books">Books</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="/categories/home">Home & Kitchen</Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            <Link href="/contact" className="hover:underline">
-              Contact Us
-            </Link>
-            <Link href="/about" className="hover:underline">
-              About Us
-            </Link>
-            <Link href="/productList" className="hover:underline">
-              Pingu
-            </Link>
-          </div>
-          <Link href="/login" className="text-primary-foreground hover:text-primary-foreground/80">
-            <UserCircle className="h-6 w-6" />
-            <span className="sr-only">Login or Sign Up</span>
-          </Link>
-        </nav>
-      </header>
-
       {/* Main Content */}
       <div className="flex-1 flex">
         {/* Sidebar */}
@@ -96,14 +54,15 @@ export default function ProductPage() {
                 <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
                 <div className="p-4">
                   <h3 className="text-lg font-semibold mb-2">{product.name}</h3>
-                  <div className="flex items-center">
+                  
+                  <Link href="/productList/product" className="flex items-center">
                     {Array(5).fill(null).map((_, i) => (
                       <Star
                         key={i}
                         className={`h-5 w-5 ${i < product.rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}`}
                       />
                     ))}
-                  </div>
+                  </Link>
                 </div>
               </div>
             ))}
